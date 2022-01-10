@@ -5,7 +5,7 @@ public class DoneTransactionModel {
     public DoneTransactionModel(){
     }
 
-    public DoneTransactionModel(String name, String phone, String hours, String minutes, String total_amount, String paid_amount, String not_paid, String partially_paid, String fully_paid) {
+    public DoneTransactionModel(String item_id,String name, String phone, String hours, String minutes, String total_amount, String paid_amount, String not_paid, String partially_paid, String fully_paid) {
         this.name = name;
         this.phone = phone;
         this.hours = hours;
@@ -15,6 +15,7 @@ public class DoneTransactionModel {
         this.not_paid = not_paid;
         this.partially_paid = partially_paid;
         this.fully_paid = fully_paid;
+        this.item_id = item_id;
     }
 
     private String name;
@@ -24,6 +25,7 @@ public class DoneTransactionModel {
     private String total_amount;
     private String paid_amount;
     private String not_paid,partially_paid,fully_paid;
+    private String item_id;
 
     public String getName() {
         return name;
@@ -95,5 +97,13 @@ public class DoneTransactionModel {
 
     public void setFully_paid(String fully_paid) {
         this.fully_paid = fully_paid;
+    }
+
+    public String getItem_id() {
+        return item_id;
+    }
+
+    public void setItem_id(String item_id) {
+        this.item_id = item_id;
     }
 }

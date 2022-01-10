@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.firebase.ui.firestore.SnapshotParser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -35,7 +37,16 @@ public class DoneActivity extends AppCompatActivity {
 
         Query query = donefirebaseFirestore.collection("transactions").whereEqualTo("fully_paid","true");
         FirestoreRecyclerOptions<DoneTransactionModel> doneoptions = new FirestoreRecyclerOptions.Builder<DoneTransactionModel>()
-                .setQuery(query,DoneTransactionModel.class)
+                .setQuery(query, new SnapshotParser<DoneTransactionModel>() {
+                    @NonNull
+                    @Override
+                    public DoneTransactionModel parseSnapshot(@NonNull DocumentSnapshot snapshot) {
+                        DoneTransactionModel doneTransactionModel = snapshot.toObject(DoneTransactionModel.class);
+                        String itemid = snapshot.getId();
+                        doneTransactionModel.setItem_id(itemid);
+                        return doneTransactionModel;
+                    }
+                })
                 .build();
 
 
@@ -55,6 +66,7 @@ public class DoneActivity extends AppCompatActivity {
                 holder.textminutes.setText(model.getMinutes());
                 holder.texttotal_amount.setText(model.getTotal_amount());
                 holder.textpaid_amount.setText(model.getPaid_amount());
+
             }
         };
 
