@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">My Tractor</string>
+    <string name="my_tractor">My Tractor</string>
+    <string name="hello_annapurna">Hello, Annapurna!</string>
+    <string name="add">Add</string>
+    <string name="add_data">కొత్త ద్దునకం నామోదు చేయండి</string>
+    <string name="name">పేరు</string>
+    <string name="phone_number">ఫోను నంబరు</string>
+    <string name="hours">గంటలు</string>
+    <string name="minutes">నిమిషాలు</string>
+    <string name="money">నగదు</string>
+    <string name="paid">చెల్లించిన సొమ్ము</string>
+    <string name="not_paid">చెల్లించబడలేదు</string>
+    <string name="partially_paid">పాక్షికంగా చెల్లించబడింది</string>
+    <string name="fully_paid">చెల్లించబడింది</string>
+    <string name="upload">అప్లోడ్</string>
+    <string name="vamsi_kalyan">VAMSI KALYAN</string>
+    <string name="_8897282899">8897282899</string>
+    <string name="change">నవీకరణ</string>
+</resources>

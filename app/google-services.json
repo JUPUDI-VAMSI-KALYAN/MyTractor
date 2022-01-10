@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "764740484089",
+    "firebase_url": "https://my-tractor-41db4-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "my-tractor-41db4",
+    "storage_bucket": "my-tractor-41db4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764740484089:android:94d01686b34ee391099b28",
+        "android_client_info": {
+          "package_name": "com.example.mytractor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764740484089-lq7dt8t3ljt3v37q081vots2sab5an2n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBrWfn-YJVGJgWu72quk-AcjSv2mJB8Dk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764740484089-lq7dt8t3ljt3v37q081vots2sab5an2n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
