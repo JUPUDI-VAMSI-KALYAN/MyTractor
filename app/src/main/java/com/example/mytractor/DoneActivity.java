@@ -37,15 +37,11 @@ public class DoneActivity extends AppCompatActivity {
 
         Query query = donefirebaseFirestore.collection("transactions").whereEqualTo("fully_paid","true");
         FirestoreRecyclerOptions<DoneTransactionModel> doneoptions = new FirestoreRecyclerOptions.Builder<DoneTransactionModel>()
-                .setQuery(query, new SnapshotParser<DoneTransactionModel>() {
-                    @NonNull
-                    @Override
-                    public DoneTransactionModel parseSnapshot(@NonNull DocumentSnapshot snapshot) {
-                        DoneTransactionModel doneTransactionModel = snapshot.toObject(DoneTransactionModel.class);
-                        String itemid = snapshot.getId();
-                        doneTransactionModel.setItem_id(itemid);
-                        return doneTransactionModel;
-                    }
+                .setQuery(query, snapshot -> {
+                    DoneTransactionModel doneTransactionModel = snapshot.toObject(DoneTransactionModel.class);
+                    String itemid = snapshot.getId();
+                    doneTransactionModel.setItem_id(itemid);
+                    return doneTransactionModel;
                 })
                 .build();
 
