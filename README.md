@@ -4,15 +4,13 @@ specially built for my mother
 
 
 
-<img src="https://github.com/JUPUDI-VAMSI-KALYAN/MyTractor/blob/master/app/src/main/res/drawable-v24/pending.jpg" width="128"/>
-
-![Splash_Screen Activty Image](https://github.com/JUPUDI-VAMSI-KALYAN/MyTractor/blob/master/app/src/main/res/drawable-v24/splashscreen.jpg)
+<image src="https://github.com/JUPUDI-VAMSI-KALYAN/MyTractor/blob/master/app/src/main/res/drawable-v24/splashscreen.jpg" width="128"/>
 
 
-![Home_Screen Activty Image](https://github.com/JUPUDI-VAMSI-KALYAN/MyTractor/blob/master/app/src/main/res/drawable-v24/home.jpg)
+<image src="https://github.com/JUPUDI-VAMSI-KALYAN/MyTractor/blob/master/app/src/main/res/drawable-v24/home.jpg" width="128"/>
 
 
-![Add_Screen Activty Image](https://github.com/JUPUDI-VAMSI-KALYAN/MyTractor/blob/master/app/src/main/res/drawable-v24/add.jpg)
+<image src="https://github.com/JUPUDI-VAMSI-KALYAN/MyTractor/blob/master/app/src/main/res/drawable-v24/add.jpg" width="128"/>
 
 
-![Contact_Screen Activty Image](https://github.com/JUPUDI-VAMSI-KALYAN/MyTractor/blob/master/app/src/main/res/drawable-v24/pending.jpg)
+<image src="https://github.com/JUPUDI-VAMSI-KALYAN/MyTractor/blob/master/app/src/main/res/drawable-v24/pending.jpg" width="128"/>
