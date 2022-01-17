@@ -124,12 +124,11 @@ public class AddActivity extends AppCompatActivity {
                 Map<String, Object> user = new HashMap<>();
                 user.put("name", cust_name);
                 user.put("phone", cust_phone);
-                db.collection("users").add(user)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                db.collection("users").document(cust_phone).set(user)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d("AddActivity", "DocumentSnapshot added with ID: " + documentReference.getId());
-                                Toast.makeText(AddActivity.this,"User Added Successfully",Toast.LENGTH_LONG).show();
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(getApplicationContext(), "Data Added Sucessfully to contact", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
