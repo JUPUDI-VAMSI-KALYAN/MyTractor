@@ -68,7 +68,17 @@ public class DoneActivity extends AppCompatActivity {
                 holder.btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText( getApplicationContext(), "Btn Clicket"+model.getItem_id(), Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(),EditDataActivity.class);
+                        i.putExtra("name",model.getName());
+                        i.putExtra("item_id",model.getItem_id());
+                        i.putExtra("phone",model.getPhone());
+                        i.putExtra("hours",model.getHours());
+                        i.putExtra("minutes",model.getMinutes());
+                        i.putExtra("total_amount",model.getTotal_amount());
+                        i.putExtra("paid_amount",model.getPaid_amount());
+                        Toast.makeText( getApplicationContext(), "Btn Clicked "+ model.getItem_id(), Toast.LENGTH_SHORT).show();
+                        startActivity(i);
+                        finish();
                     }
                 });
 

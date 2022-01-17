@@ -11,8 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -106,9 +108,14 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
-        Query query = home_firebaseFirestore.collection("transactions").whereEqualTo("fully_paid","false").limit(20);
+        Query query = home_firebaseFirestore.collection("transactions").whereEqualTo("fully_paid","false").limit(10).orderBy("timestamp", Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<HomeTransactionModel> options = new FirestoreRecyclerOptions.Builder<HomeTransactionModel>()
-                .setQuery(query,HomeTransactionModel.class)
+                .setQuery(query, snapshot -> {
+                    HomeTransactionModel HomeTransactionModel = snapshot.toObject(HomeTransactionModel.class);
+                    String itemid = snapshot.getId();
+                    HomeTransactionModel.setItemId(itemid);
+                    return HomeTransactionModel;
+                })
                 .build();
 
         home_adapter = new FirestoreRecyclerAdapter<HomeTransactionModel, HomeActivity.hometransViewHolder>(options) {
@@ -127,6 +134,25 @@ public class HomeActivity extends AppCompatActivity {
                 holder.textminutes.setText(model.getMinutes());
                 holder.texttotal_amount.setText(model.getTotal_amount());
                 holder.textpaid_amount.setText(model.getPaid_amount());
+                holder.btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(getApplicationContext(),EditDataActivity.class);
+                        i.putExtra("name",model.getName());
+                        i.putExtra("item_id",model.getItemId());
+                        i.putExtra("phone",model.getPhone());
+                        i.putExtra("hours",model.getHours());
+                        i.putExtra("minutes",model.getMinutes());
+                        i.putExtra("total_amount",model.getTotal_amount());
+                        i.putExtra("paid_amount",model.getPaid_amount());
+                        Toast.makeText( getApplicationContext(), "Btn Clicked "+ model.getItemId(), Toast.LENGTH_SHORT).show();
+                        startActivity(i);
+                        finish();
+                    }
+                });
+
+
+
             }
         };
 
@@ -145,6 +171,7 @@ public class HomeActivity extends AppCompatActivity {
         private TextView texthours;
         private TextView texttotal_amount;
         private TextView textpaid_amount;
+        private Button btn;
 
         public hometransViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -154,6 +181,7 @@ public class HomeActivity extends AppCompatActivity {
             textminutes = itemView.findViewById(R.id.card_minute);
             texttotal_amount = itemView.findViewById(R.id.card_total_amount);
             textpaid_amount = itemView.findViewById(R.id.card_paid_amount);
+            btn = itemView.findViewById(R.id.cardchangebutton);
         }
     }
 
