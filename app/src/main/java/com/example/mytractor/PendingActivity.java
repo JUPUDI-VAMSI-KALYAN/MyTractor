@@ -1,10 +1,14 @@
 package com.example.mytractor;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +20,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 public class PendingActivity extends AppCompatActivity {
@@ -33,9 +38,14 @@ public class PendingActivity extends AppCompatActivity {
         mfirestorelist = findViewById(R.id.recycleview_pending);
         firebaseFirestore = FirebaseFirestore.getInstance();
 
-        Query query = firebaseFirestore.collection("transactions").whereEqualTo("fully_paid","false").limit(50);
+        Query query = firebaseFirestore.collection("transactions").whereEqualTo("fully_paid","false").limit(50).orderBy("timestamp");
         FirestoreRecyclerOptions<TransactionModel> options = new FirestoreRecyclerOptions.Builder<TransactionModel>()
-                .setQuery(query,TransactionModel.class)
+                .setQuery(query, snapshot -> {
+                    TransactionModel TransactionModel = snapshot.toObject(TransactionModel.class);
+                    String itemid = snapshot.getId();
+                    TransactionModel.setItemId(itemid);
+                    return TransactionModel;
+                })
                 .build();
 
         adapter = new FirestoreRecyclerAdapter<TransactionModel,transViewHolder>(options) {
@@ -54,6 +64,22 @@ public class PendingActivity extends AppCompatActivity {
                 holder.textminutes.setText(model.getMinutes());
                 holder.texttotal_amount.setText(model.getTotal_amount());
                 holder.textpaid_amount.setText(model.getPaid_amount());
+                holder.btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(getApplicationContext(),EditDataActivity.class);
+                        i.putExtra("name",model.getName());
+                        i.putExtra("item_id",model.getItemId());
+                        i.putExtra("phone",model.getPhone());
+                        i.putExtra("hours",model.getHours());
+                        i.putExtra("minutes",model.getMinutes());
+                        i.putExtra("total_amount",model.getTotal_amount());
+                        i.putExtra("paid_amount",model.getPaid_amount());
+                        Toast.makeText( getApplicationContext(), "Btn Clicked "+ model.getItemId(), Toast.LENGTH_SHORT).show();
+                        startActivity(i);
+                    }
+                });
+
             }
         };
 
@@ -71,6 +97,7 @@ public class PendingActivity extends AppCompatActivity {
         private TextView texthours;
         private TextView texttotal_amount;
         private TextView textpaid_amount;
+        private Button btn;
 
         public transViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,6 +107,7 @@ public class PendingActivity extends AppCompatActivity {
             textminutes = itemView.findViewById(R.id.card_minute);
             texttotal_amount = itemView.findViewById(R.id.card_total_amount);
             textpaid_amount = itemView.findViewById(R.id.card_paid_amount);
+            btn = itemView.findViewById(R.id.cardchangebutton);
         }
     }
 

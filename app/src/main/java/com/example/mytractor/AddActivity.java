@@ -112,6 +112,7 @@ public class AddActivity extends AppCompatActivity {
                 transaction.put("not_paid",not_paid);
                 transaction.put("partially_paid",partially_paid);
                 transaction.put("fully_paid",fully_paid);
+                transaction.put("timestamp",FieldValue.serverTimestamp());
 
                 // Add a new document with a generated ID
                 DocumentReference total_transactions = db.collection("info").document("tzEHGsk9HSxCk9jo9zp8");

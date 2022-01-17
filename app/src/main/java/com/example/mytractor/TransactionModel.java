@@ -8,7 +8,15 @@ public class TransactionModel  {
 
     }
 
-    public TransactionModel(String name, String phone, String hours, String minutes, String total_amount, String paid_amount, String not_paid, String partially_paid, String fully_paid) {
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
+    }
+
+    public TransactionModel(String itemId, String name, String phone, String hours, String minutes, String total_amount, String paid_amount, String not_paid, String partially_paid, String fully_paid) {
         this.name = name;
         this.phone = phone;
         this.hours = hours;
@@ -18,9 +26,11 @@ public class TransactionModel  {
         this.not_paid = not_paid;
         this.partially_paid = partially_paid;
         this.fully_paid = fully_paid;
+        this.itemId = itemId;
     }
 
     private String name;
+    private String itemId;
     private String phone;
     private String hours;
     private String minutes;

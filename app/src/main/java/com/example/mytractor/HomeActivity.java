@@ -49,7 +49,6 @@ public class HomeActivity extends AppCompatActivity {
 
         home_mfirestorelist = findViewById(R.id.recycleview_home_pending);
         home_firebaseFirestore = FirebaseFirestore.getInstance();
-
         //update home
         db.collection("info").document("tzEHGsk9HSxCk9jo9zp8").get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -67,6 +66,8 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         //update home end
+
+
 
 
 

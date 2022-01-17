@@ -10,8 +10,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -63,6 +65,13 @@ public class DoneActivity extends AppCompatActivity {
                 holder.texttotal_amount.setText(model.getTotal_amount());
                 holder.textpaid_amount.setText(model.getPaid_amount());
 
+                holder.btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText( getApplicationContext(), "Btn Clicket"+model.getItem_id(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         };
 
@@ -82,6 +91,7 @@ public class DoneActivity extends AppCompatActivity {
         private TextView texthours;
         private TextView texttotal_amount;
         private TextView textpaid_amount;
+        private Button btn;
 
         public donetransViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,6 +101,11 @@ public class DoneActivity extends AppCompatActivity {
             textminutes = itemView.findViewById(R.id.card_minute);
             texttotal_amount = itemView.findViewById(R.id.card_total_amount);
             textpaid_amount = itemView.findViewById(R.id.card_paid_amount);
+            btn = itemView.findViewById(R.id.cardchangebutton);
+
+
+
+
         }
     }
 
