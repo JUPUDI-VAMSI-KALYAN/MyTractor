@@ -164,6 +164,13 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    public void driverfunction(View view) {
+
+        Intent i = new Intent(getApplicationContext(),DriverActivity.class);
+        startActivity(i);
+
+    }
+
     private class hometransViewHolder extends RecyclerView.ViewHolder{
         private TextView textname;
         private TextView textphone;

@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTractor">
         <activity
+            android:name=".DriverActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditDataActivity"
             android:exported="false" />
         <activity
